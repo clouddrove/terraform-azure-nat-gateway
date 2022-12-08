@@ -42,7 +42,6 @@ module "vnet" {
   ]
 }
 
-
 module "nat_gateway" {
   depends_on = [module.resource_group, module.vnet]
   source     = "./../"
