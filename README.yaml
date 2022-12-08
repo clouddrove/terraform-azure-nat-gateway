@@ -39,7 +39,7 @@ usage: |-
   ```hcl
   module "nat_gateway" {
 
-  source              = "clouddrove/NAT-gateway/azure"
+  source              = "clouddrove/nat-gateway/azure"
   create_nat_gateway = true
   label_order = ["name", "environment"]
   app_name = "nat"
