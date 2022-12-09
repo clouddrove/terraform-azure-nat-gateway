@@ -12,7 +12,7 @@ resource "azurerm_public_ip" "pip" {
   count               = var.create_public_ip ? 1 : 0
   allocation_method   = "Static"
   location            = var.location
-  name                = format("%s-NAT-gateway-ip", module.labels.id)
+  name                = format("%s-nat-gateway-ip", module.labels.id)
   resource_group_name = var.resource_group_name
   zones               = var.public_ip_zones
   sku                 = "Standard"
@@ -24,7 +24,7 @@ resource "azurerm_public_ip" "pip" {
 resource "azurerm_nat_gateway" "natgw" {
   count                   = var.create_nat_gateway ? 1 : 0
   location                = var.location
-  name                    = format("%s-NAT-gateway", module.labels.id)
+  name                    = format("%s-nat-gateway", module.labels.id)
   resource_group_name     = var.resource_group_name
   sku_name                = "Standard"
   idle_timeout_in_minutes = var.nat_gateway_idle_timeout
