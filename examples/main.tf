@@ -6,9 +6,9 @@ module "resource_group" {
   source  = "clouddrove/resource-group/azure"
   version = "1.0.0"
 
-  label_order = ["name", "environment"]
   name        = "app"
   environment = "example"
+  label_order = ["name", "environment"]
   location    = "Canada Central"
 }
 
