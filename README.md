@@ -73,13 +73,11 @@ Here is an example of how you can use this module in your inventory structure:
 ```hcl
 module "nat_gateway" {
  source              = "clouddrove/nat-gateway/azure"
- create_nat_gateway  = true
  name                = "app"
  environment         = "example"
- label_order         = ["name", "environment"]
  location            = module.resource_group.resource_group_location
  resource_group_name = module.resource_group.resource_group_name
- subnet_ids          = module.vnet.vnet_subnets
+ subnet_ids          = module.subnet.default_subnet_id
  }
   ```
 
@@ -92,10 +90,10 @@ module "nat_gateway" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| create\_nat\_gateway | n/a | `bool` | `false` | no |
+| create\_nat\_gateway | n/a | `bool` | `true` | no |
 | create\_public\_ip | Should we create a public IP or not? | `bool` | `true` | no |
 | environment | Project environment | `string` | n/a | yes |
-| label\_order | Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] . | `list(any)` | `[]` | no |
+| label\_order | Label order, e.g. sequence of application name and environment `name`,`environment`,'attribute' [`webserver`,`qa`,`devops`,`public`,] . | `list(any)` | <pre>[<br>  "name",<br>  "environment"<br>]</pre> | no |
 | location | Azure region to use | `string` | n/a | yes |
 | managedby | ManagedBy, eg ''. | `string` | `""` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
